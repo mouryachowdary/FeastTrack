@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 
+import { AuthProvider } from "@/components/auth-context";
 import { Toaster } from "@/components/ui/sonner";
 import appCss from "../styles.css?url";
 
@@ -119,8 +120,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AuthProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </AuthProvider>
       <Toaster />
     </QueryClientProvider>
   );

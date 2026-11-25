@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      "User Authentication": {
+        Row: {
+          "created-at": string
+          full_name: string
+          id: string
+          role: string
+        }
+        Insert: {
+          "created-at": string
+          full_name: string
+          id: string
+          role: string
+        }
+        Update: {
+          "created-at"?: string
+          full_name?: string
+          id?: string
+          role?: string
+        }
+        Relationships: []
+      }
+      employee_activity: {
+        Row: {
+          created_at: string
+          id: string
+          login_at: string
+          logout_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          login_at?: string
+          logout_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          login_at?: string
+          logout_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       orders: {
         Row: {
           amount_paid: number
@@ -123,7 +168,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      is_admin: { Args: Record<PropertyKey, never>; Returns: boolean }
       is_team_member: { Args: { _uid: string }; Returns: boolean }
+      record_employee_logout: {
+        Args: { p_activity_id: string; p_user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never

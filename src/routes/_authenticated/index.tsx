@@ -10,6 +10,8 @@ import { feastKey, loadFeast } from "@/components/feast-data";
 import { BIRYANI_CATEGORIES, CREW, ITEMS, REFUND_PER_PERSON, expectedRefundDate, fmtDate, officeDue, personRefund, rs } from "@/lib/feast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useAuth } from "@/components/auth-context";
+import { EmployeeManagement } from "@/components/employee-management";
 
 export const Route = createFileRoute("/_authenticated/")({
   head: () => ({
@@ -185,7 +187,16 @@ function Index() {
 }
 
 function Shell({ children }: { children: React.ReactNode }) {
-  return <main className="min-h-screen bg-background text-foreground"><SiteHeader /><div className="mx-auto max-w-6xl px-6 py-8">{children}</div></main>;
+  const { profile } = useAuth();
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <SiteHeader />
+      <div className="mx-auto max-w-6xl px-6 py-8">
+        {children}
+        {profile?.role === "admin" && <EmployeeManagement />}
+      </div>
+    </main>
+  );
 }
 function Stat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return <div className="rounded-xl border border-border bg-card p-4"><div className={`font-display text-4xl ${accent ? "text-primary" : ""}`}>{value}</div><div className="font-mono text-xs uppercase text-muted-foreground">{label}</div></div>;
