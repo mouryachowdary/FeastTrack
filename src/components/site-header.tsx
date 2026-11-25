@@ -22,7 +22,7 @@ export function SiteHeader() {
               e.preventDefault();
               const email = usernameToAuthEmail(invite);
               if (!email) {
-                toast.error("Use 1–32 letters, numbers, periods, underscores, or hyphens.");
+                toast.error("Use 1–50 letters, numbers, periods, underscores, or hyphens.");
                 return;
               }
               const { error } = await supabase.from("team_invites").insert({ email });
@@ -36,7 +36,7 @@ export function SiteHeader() {
             <input
               type="text"
               required
-              maxLength={32}
+              maxLength={50}
               value={invite}
               onChange={(e) => setInvite(e.target.value)}
               placeholder="Invite username"

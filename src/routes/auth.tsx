@@ -35,7 +35,7 @@ function AuthPage() {
     e.preventDefault();
     const email = usernameToAuthEmail(username);
     if (!email) {
-      toast.error("Use 1–32 letters, numbers, periods, underscores, or hyphens for your username.");
+      toast.error("Use 1–50 letters, numbers, periods, underscores, or hyphens for your username.");
       return;
     }
 
@@ -55,7 +55,7 @@ function AuthPage() {
             type="text"
             placeholder="Username"
             autoComplete="off"
-            maxLength={32}
+            maxLength={50}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -64,6 +64,7 @@ function AuthPage() {
             type="password"
             placeholder="Password"
             autoComplete="current-password"
+            maxLength={14}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

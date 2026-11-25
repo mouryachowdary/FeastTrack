@@ -7,9 +7,13 @@ describe("usernameToAuthEmail", () => {
     expect(usernameToAuthEmail("  Sam_2 ")).toBe("sam_2@login.feasttrack.invalid");
   });
 
-  it("rejects usernames outside the supported character and length rules", () => {
+  it("rejects usernames with unsupported characters", () => {
     expect(usernameToAuthEmail("-sam")).toBeUndefined();
     expect(usernameToAuthEmail("sam user")).toBeUndefined();
-    expect(usernameToAuthEmail("a".repeat(33))).toBeUndefined();
+  });
+
+  it("accepts usernames up to 50 characters and rejects longer ones", () => {
+    expect(usernameToAuthEmail("a".repeat(50))).toBe("a".repeat(50) + "@login.feasttrack.invalid");
+    expect(usernameToAuthEmail("a".repeat(51))).toBeUndefined();
   });
 });
