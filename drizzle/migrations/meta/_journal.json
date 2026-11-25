@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1795620274480,
+      "tag": "0000_biryani_weeks",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795620374320,
+      "tag": "0001_week_vendor_prices",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795623963850,
+      "tag": "0002_team_only_access",
+      "breakpoints": true
+    }
+  ]
+}

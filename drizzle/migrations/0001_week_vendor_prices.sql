@@ -1,0 +1,2 @@
+ALTER TABLE public.weeks ADD COLUMN vendor text NOT NULL DEFAULT '', ADD COLUMN prices jsonb NOT NULL DEFAULT '{}'::jsonb;
+UPDATE public.weeks SET prices = '{"Kalmi":200,"Mughalai":200,"Chicken Dum":200,"ChickenFry Piece":200,"Veg Item":200}'::jsonb WHERE order_date = '2026-11-12';
