@@ -50,11 +50,11 @@ function AuthPage() {
         <p className="mb-4 text-sm text-muted-foreground">
           Team members only. Sign in with your assigned username and password.
         </p>
-        <form onSubmit={submit} className="space-y-3">
+        <form onSubmit={submit} className="space-y-3" autoComplete="off">
           <Input
             type="text"
             placeholder="Username"
-            autoComplete="username"
+            autoComplete="off"
             maxLength={32}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
